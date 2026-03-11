@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "DailyDevPodcast.Functions": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7168",
+      "launchBrowser": false
+    }
+  }
+}

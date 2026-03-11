@@ -1,11 +1,11 @@
 name: Deploy Azure Functions
 
 on:
+  workflow_dispatch: # trigger manually once functions/ code exists
   push:
     branches: [main]
     paths:
       - 'functions/**'
-      - '.github/workflows/deploy-functions.yml'
 
 jobs:
   build-and-deploy:
