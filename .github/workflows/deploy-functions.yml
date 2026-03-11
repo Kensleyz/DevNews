@@ -1,0 +1,31 @@
+name: Deploy Azure Functions
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'functions/**'
+      - '.github/workflows/deploy-functions.yml'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build
+        run: dotnet publish functions/src/DailyDevPodcast.Functions.csproj --configuration Release --output ./publish
+
+      - name: Deploy to Azure Functions
+        uses: Azure/functions-action@v1
+        with:
+          app-name: func-devpod-prod
+          package: ./publish
+          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}

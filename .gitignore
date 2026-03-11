@@ -1,0 +1,15 @@
+# .NET
+bin/
+obj/
+publish/
+*.user
+local.settings.json
+
+# Node / Expo
+node_modules/
+.expo/
+dist/
+
+# Misc
+.DS_Store
+*.log
