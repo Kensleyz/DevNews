@@ -1,4 +1,0 @@
-Infra
-az deployment group create --resource-group myspace --template-file main.bicep --parameters parameters/prod.bicepparam
-
-
